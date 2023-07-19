@@ -22,6 +22,8 @@
     margin-top: 5vh;
     margin-bottom: 20px;
     animation: slide-in ease 0.3s;
+    flex-wrap: wrap;
+    gap: 4px;
 
     .mask-card {
       padding: 20px 10px;
@@ -31,13 +33,26 @@
       background-color: var(--white);
       transform: scale(1);
 
-      // &:first-child {
-      //   transform: rotate(-15deg) translateY(5px);
-      // }
+      p{
+        text-align: center;
+        margin: 5px 0;
+        font-weight: 600;
+        font-size: 16px;
+      }
 
-      // &:last-child {
-      //   transform: rotate(15deg) translateY(5px);
-      // }
+      &:first-child {
+        transform: rotate(-15deg) translateY(5px);
+      }
+      &:nth-child(2) {
+        transform: rotate(-5deg) translateY(-18px);
+      }
+      &:nth-child(3) {
+        transform: rotate(5deg) translateY(-18px);
+      }
+
+      &:last-child {
+        transform: rotate(15deg) translateY(5px);
+      }
     }
   }
 
