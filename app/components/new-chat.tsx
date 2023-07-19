@@ -17,6 +17,12 @@ import { useCommand } from "../command";
 import { showConfirm } from "./ui-lib";
 import { BUILTIN_MASK_STORE } from "../masks";
 
+import Image from "next/image";
+import profilePic1 from "../../public/企鹅1.png";
+import profilePic2 from "../../public/企鹅2.png";
+import profilePic3 from "../../public/企鹅3.png";
+import profilePic4 from "../../public/企鹅4.png";
+
 function getIntersectionArea(aRect: DOMRect, bRect: DOMRect) {
   const xmin = Math.max(aRect.x, bRect.x);
   const xmax = Math.min(aRect.x + aRect.width, bRect.x + bRect.width);
@@ -142,14 +148,24 @@ export function NewChat() {
       </div>
       <div className={styles["mask-cards"]}>
         <div className={styles["mask-card"]}>
-          <EmojiAvatar avatar="1f606" size={24} />
+          <Image src={profilePic1} width={100} alt="Picture of the author" />
+          <p>123</p>
         </div>
         <div className={styles["mask-card"]}>
+          <Image src={profilePic2} width={100} alt="Picture of the author" />
+        </div>
+        <div className={styles["mask-card"]}>
+          <Image src={profilePic3} width={100} alt="Picture of the author" />
+        </div>
+        <div className={styles["mask-card"]}>
+          <Image src={profilePic4} width={100} alt="Picture of the author" />
+        </div>
+        {/* <div className={styles["mask-card"]}>
           <EmojiAvatar avatar="1f916" size={24} />
         </div>
         <div className={styles["mask-card"]}>
           <EmojiAvatar avatar="1f479" size={24} />
-        </div>
+        </div> */}
       </div>
 
       <div className={styles["title"]}>{Locale.NewChat.Title}</div>
