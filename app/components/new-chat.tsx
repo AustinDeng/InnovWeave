@@ -131,19 +131,6 @@ export function NewChat() {
           text={Locale.NewChat.Return}
           onClick={() => navigate(Path.Home)}
         ></IconButton>
-        {!state?.fromHome && (
-          <IconButton
-            text={Locale.NewChat.NotShow}
-            onClick={async () => {
-              if (await showConfirm(Locale.NewChat.ConfirmNoShow)) {
-                startChat();
-                config.update(
-                  (config) => (config.dontShowMaskSplashScreen = true),
-                );
-              }
-            }}
-          ></IconButton>
-        )}
       </div>
       <div className={styles["mask-cards"]}>
         {weMasks.map((mask, i) => (
@@ -187,8 +174,8 @@ export function NewChat() {
         </div> */}
       </div>
 
-      <div className={styles["title"]}>{Locale.NewChat.Title}</div>
-      <div className={styles["sub-title"]}>{Locale.NewChat.SubTitle}</div>
+      {/* <div className={styles["title"]}>{Locale.NewChat.Title}</div> */}
+      {/* <div className={styles["sub-title"]}>{Locale.NewChat.SubTitle}</div> */}
 
       <div className={styles["actions"]}>
         <IconButton
