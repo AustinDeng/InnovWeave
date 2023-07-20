@@ -32,6 +32,13 @@
       border-radius: 14px;
       background-color: var(--white);
       transform: scale(1);
+      cursor: pointer;
+      
+      &:hover{
+        transform: scale(1.5);
+        z-index: 999;
+        border-color: var(--primary);
+      }
 
       p{
         text-align: center;
