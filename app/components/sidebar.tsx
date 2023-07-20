@@ -66,7 +66,7 @@ function useDragSideBar() {
     }
     lastUpdateTime.current = Date.now();
     const d = e.clientX - startX.current;
-    const nextWidth = limit(startDragWidth.current + d);
+    const nextWidth = limit(startDragWidth.current - d);
     config.update((config) => (config.sidebarWidth = nextWidth));
   });
 
@@ -116,6 +116,13 @@ export function SideBar(props: { className?: string }) {
         shouldNarrow && styles["narrow-sidebar"]
       }`}
     >
+      <div
+        className={styles["sidebar-drag"]}
+        onMouseDown={(e) => onDragMouseDown(e as any)}
+      >
+        <DragIcon />
+      </div>
+
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
           InnovWeave
@@ -127,17 +134,6 @@ export function SideBar(props: { className?: string }) {
           <ChatGptIcon width="40px" height="40px" />
         </div>
       </div>
-      <div
-        className={styles["sidebar-body"]}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            navigate(Path.Home);
-          }
-        }}
-      >
-        <ChatList narrow={shouldNarrow} />
-      </div>
-
       <div className={styles["sidebar-tail"]}>
         <div className={styles["sidebar-actions"]}>
           <div className={styles["sidebar-action"] + " " + styles.mobile}>
@@ -177,12 +173,15 @@ export function SideBar(props: { className?: string }) {
           />
         </div>
       </div>
-
       <div
-        className={styles["sidebar-drag"]}
-        onMouseDown={(e) => onDragMouseDown(e as any)}
+        className={styles["sidebar-body"]}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            navigate(Path.Home);
+          }
+        }}
       >
-        <DragIcon />
+        <ChatList narrow={shouldNarrow} />
       </div>
     </div>
   );

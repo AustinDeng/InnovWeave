@@ -18,7 +18,6 @@ import { showConfirm } from "./ui-lib";
 import { BUILTIN_MASK_STORE } from "../masks";
 
 import Image from "next/image";
-import profile1 from "@/public/运维.png";
 
 function getIntersectionArea(aRect: DOMRect, bRect: DOMRect) {
   const xmin = Math.max(aRect.x, bRect.x);
@@ -196,7 +195,7 @@ export function NewChat() {
         />
       </div>
 
-      <div className={styles["masks"]} ref={maskRef}>
+      {/* <div className={styles["masks"]} ref={maskRef}>
         {groups.map((masks, i) => (
           <div key={i} className={styles["mask-row"]}>
             {masks.map((mask, index) => (
@@ -208,7 +207,7 @@ export function NewChat() {
             ))}
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

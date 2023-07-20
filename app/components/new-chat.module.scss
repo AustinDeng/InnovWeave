@@ -7,8 +7,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 
   .mask-header {
+    position: absolute;
+    top: 0;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -93,6 +96,7 @@
     overflow: auto;
     align-items: center;
     padding-top: 20px;
+    background-image: url('../../public/webank.png');
 
     $linear: linear-gradient(to bottom,
       rgba(0, 0, 0, 0),
