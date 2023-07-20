@@ -134,6 +134,18 @@ export function SideBar(props: { className?: string }) {
           <ChatGptIcon width="40px" height="40px" />
         </div>
       </div>
+
+      <div
+        className={styles["sidebar-body"]}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            navigate(Path.Home);
+          }
+        }}
+      >
+        <ChatList narrow={shouldNarrow} />
+      </div>
+
       <div className={styles["sidebar-tail"]}>
         <div className={styles["sidebar-actions"]}>
           <div className={styles["sidebar-action"] + " " + styles.mobile}>
@@ -172,16 +184,6 @@ export function SideBar(props: { className?: string }) {
             shadow
           />
         </div>
-      </div>
-      <div
-        className={styles["sidebar-body"]}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            navigate(Path.Home);
-          }
-        }}
-      >
-        <ChatList narrow={shouldNarrow} />
       </div>
     </div>
   );

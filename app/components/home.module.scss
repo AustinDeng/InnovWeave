@@ -39,6 +39,7 @@
 
 .sidebar {
   top: 0;
+  right: 0;
   width: var(--sidebar-width);
   box-sizing: border-box;
   padding: 20px;
@@ -90,7 +91,7 @@
 
   svg {
     opacity: 0;
-    margin-left: -2px;
+    margin-right: -2px;
   }
 }
 
@@ -317,7 +318,7 @@
 .sidebar-tail {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .sidebar-actions {
