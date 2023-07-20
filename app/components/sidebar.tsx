@@ -5,7 +5,7 @@ import styles from "./home.module.scss";
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
 import GithubIcon from "../icons/github.svg";
-import ChatGptIcon from "../icons/chatgpt.svg";
+import ChatGptIcon from "../icons/企鹅.svg";
 import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import MaskIcon from "../icons/mask.svg";
@@ -66,7 +66,7 @@ function useDragSideBar() {
     }
     lastUpdateTime.current = Date.now();
     const d = e.clientX - startX.current;
-    const nextWidth = limit(startDragWidth.current + d);
+    const nextWidth = limit(startDragWidth.current - d);
     config.update((config) => (config.sidebarWidth = nextWidth));
   });
 
@@ -116,6 +116,13 @@ export function SideBar(props: { className?: string }) {
         shouldNarrow && styles["narrow-sidebar"]
       }`}
     >
+      <div
+        className={styles["sidebar-drag"]}
+        onMouseDown={(e) => onDragMouseDown(e as any)}
+      >
+        <DragIcon />
+      </div>
+
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
           InnovWeave
@@ -124,26 +131,9 @@ export function SideBar(props: { className?: string }) {
           Weaving Innovation into Development.
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
-          <ChatGptIcon />
+          <ChatGptIcon width="40px" height="40px" />
         </div>
       </div>
-
-      {/* <div className={styles["sidebar-header-bar"]}> */}
-      {/* <IconButton
-          icon={<AddIcon />}
-          text={shouldNarrow ? undefined : Locale.Mask.Name}
-          className={styles["sidebar-bar-button"]}
-          onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}
-          shadow
-        /> */}
-      {/* <IconButton
-          icon={<PluginIcon />}
-          text={shouldNarrow ? undefined : Locale.Plugin.Name}
-          className={styles["sidebar-bar-button"]}
-          onClick={() => showToast(Locale.WIP)}
-          shadow
-        /> */}
-      {/* </div> */}
 
       <div
         className={styles["sidebar-body"]}
@@ -194,13 +184,6 @@ export function SideBar(props: { className?: string }) {
             shadow
           />
         </div>
-      </div>
-
-      <div
-        className={styles["sidebar-drag"]}
-        onMouseDown={(e) => onDragMouseDown(e as any)}
-      >
-        <DragIcon />
       </div>
     </div>
   );
