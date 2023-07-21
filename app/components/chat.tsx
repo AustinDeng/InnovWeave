@@ -806,6 +806,8 @@ export function Chat() {
 
   const context: RenderMessage[] = session.mask.hideContext
     ? []
+    : session.mask.weidea
+    ? session.mask.context.slice(session.mask.context.length - 1)
     : session.mask.context.slice();
 
   const accessStore = useAccessStore();
