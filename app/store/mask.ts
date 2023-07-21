@@ -6,6 +6,7 @@ import { DEFAULT_TOPIC, ChatMessage } from "./chat";
 import { ModelConfig, useAppConfig } from "./config";
 import { StoreKey } from "../constant";
 import { nanoid } from "nanoid";
+import { StaticImageData } from "next/image";
 
 export type Mask = {
   id: string;
@@ -18,6 +19,7 @@ export type Mask = {
   modelConfig: ModelConfig;
   lang: Lang;
   builtin: boolean;
+  pic?: StaticImageData;
 };
 
 export const DEFAULT_MASK_STATE = {
@@ -32,6 +34,7 @@ type MaskStore = MaskState & {
   search: (text: string) => Mask[];
   get: (id?: string) => Mask | null;
   getAll: () => Mask[];
+  getWeIdea: () => Mask[];
 };
 
 export const DEFAULT_MASK_AVATAR = "gpt-bot";
@@ -102,6 +105,20 @@ export const useMaskStore = create<MaskStore>()(
             } as Mask),
         );
         return userMasks.concat(buildinMasks);
+      },
+      getWeIdea() {
+        const config = useAppConfig.getState();
+        const weMasks = BUILTIN_MASKS.filter((m) => !m.builtin).map(
+          (m) =>
+            ({
+              ...m,
+              modelConfig: {
+                ...config.modelConfig,
+                ...m.modelConfig,
+              },
+            } as Mask),
+        );
+        return weMasks;
       },
       search(text) {
         return Object.values(get().masks);

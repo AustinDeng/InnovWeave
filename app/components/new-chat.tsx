@@ -17,6 +17,8 @@ import { useCommand } from "../command";
 import { showConfirm } from "./ui-lib";
 import { BUILTIN_MASK_STORE } from "../masks";
 
+import Image from "next/image";
+
 function getIntersectionArea(aRect: DOMRect, bRect: DOMRect) {
   const xmin = Math.max(aRect.x, bRect.x);
   const xmax = Math.min(aRect.x + aRect.width, bRect.x + bRect.width);
@@ -86,6 +88,8 @@ export function NewChat() {
   const masks = maskStore.getAll();
   const groups = useMaskGroup(masks);
 
+  const weMasks = maskStore.getWeIdea();
+
   const navigate = useNavigate();
   const config = useAppConfig();
 
@@ -126,34 +130,51 @@ export function NewChat() {
           text={Locale.NewChat.Return}
           onClick={() => navigate(Path.Home)}
         ></IconButton>
-        {!state?.fromHome && (
-          <IconButton
-            text={Locale.NewChat.NotShow}
-            onClick={async () => {
-              if (await showConfirm(Locale.NewChat.ConfirmNoShow)) {
-                startChat();
-                config.update(
-                  (config) => (config.dontShowMaskSplashScreen = true),
-                );
-              }
-            }}
-          ></IconButton>
-        )}
       </div>
       <div className={styles["mask-cards"]}>
-        <div className={styles["mask-card"]}>
-          <EmojiAvatar avatar="1f606" size={24} />
+        {weMasks.map((mask, i) => (
+          <div key={i} className={styles["mask-card"]}>
+            <Image
+              src={mask.pic!}
+              width={120}
+              alt="Picture of the author"
+              onClick={() => startChat(mask)}
+            />
+            <p>{mask.name}</p>
+          </div>
+        ))}
+        {/* <div className={styles["mask-card"]}>
+          <Image
+            src={profilePic1}
+            width={120}
+            alt="Picture of the author"
+            style={{ cursor: "pointer" }}
+            onClick={() => startChat({ id: "114514", ...WE_MASKS[0] })}
+          />
+          <p>灵感设计</p>
         </div>
         <div className={styles["mask-card"]}>
+          <Image src={profilePic2} width={120} alt="Picture of the author" />
+          <p>代码悟道</p>
+        </div>
+        <div className={styles["mask-card"]}>
+          <Image src={profilePic3} width={120} alt="Picture of the author" />
+          <p>稳健测试</p>
+        </div>
+        <div className={styles["mask-card"]}>
+          <Image src={profilePic4} width={120} alt="Picture of the author" />
+          <p>运维日常</p>
+        </div> */}
+        {/* <div className={styles["mask-card"]}>
           <EmojiAvatar avatar="1f916" size={24} />
         </div>
         <div className={styles["mask-card"]}>
           <EmojiAvatar avatar="1f479" size={24} />
-        </div>
+        </div> */}
       </div>
 
-      <div className={styles["title"]}>{Locale.NewChat.Title}</div>
-      <div className={styles["sub-title"]}>{Locale.NewChat.SubTitle}</div>
+      {/* <div className={styles["title"]}>{Locale.NewChat.Title}</div> */}
+      {/* <div className={styles["sub-title"]}>{Locale.NewChat.SubTitle}</div> */}
 
       <div className={styles["actions"]}>
         <IconButton
@@ -174,7 +195,7 @@ export function NewChat() {
         />
       </div>
 
-      <div className={styles["masks"]} ref={maskRef}>
+      {/* <div className={styles["masks"]} ref={maskRef}>
         {groups.map((masks, i) => (
           <div key={i} className={styles["mask-row"]}>
             {masks.map((mask, index) => (
@@ -186,7 +207,7 @@ export function NewChat() {
             ))}
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

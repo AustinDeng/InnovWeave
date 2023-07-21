@@ -137,8 +137,6 @@ function Screen() {
         </>
       ) : (
         <>
-          <SideBar className={isHome ? styles["sidebar-show"] : ""} />
-
           <div className={styles["window-content"]} id={SlotID.AppBody}>
             <Routes>
               <Route path={Path.Home} element={<Chat />} />
@@ -148,6 +146,8 @@ function Screen() {
               <Route path={Path.Settings} element={<Settings />} />
             </Routes>
           </div>
+
+          <SideBar className={isHome ? styles["sidebar-show"] : ""} />
         </>
       )}
     </div>

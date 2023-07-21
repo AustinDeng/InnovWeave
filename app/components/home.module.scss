@@ -39,6 +39,7 @@
 
 .sidebar {
   top: 0;
+  right: 0;
   width: var(--sidebar-width);
   box-sizing: border-box;
   padding: 20px;
@@ -47,7 +48,7 @@
   flex-direction: column;
   box-shadow: inset -2px 0px 2px 0px rgb(0, 0, 0, 0.05);
   position: relative;
-  transition: width ease 0.05s;
+  // transition: width ease 0.05s;
 
   .sidebar-header-bar {
     display: flex;
@@ -79,7 +80,7 @@
 
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   height: 100%;
   width: $width;
   background-color: rgba($color: #000000, $alpha: 0);
@@ -90,7 +91,7 @@
 
   svg {
     opacity: 0;
-    margin-left: -2px;
+    margin-right: -2px;
   }
 }
 
@@ -149,12 +150,15 @@
   font-size: 20px;
   font-weight: bold;
   animation: slide-in ease 0.3s;
+  color: rgb(159, 78, 67);
 }
 
 .sidebar-sub-title {
   font-size: 12px;
   font-weight: 400;
   animation: slide-in ease 0.3s;
+  color: rgb(159, 78, 67);
+  opacity: 0.5;
 }
 
 .sidebar-body {
