@@ -43,11 +43,14 @@
         border-color: var(--primary);
       }
 
-      p{
-        text-align: center;
-        margin: 5px 0;
+      .mask-card-desc{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4px 0;
         font-weight: 600;
         font-size: 16px;
+        gap: 4px;
       }
 
       &:first-child {

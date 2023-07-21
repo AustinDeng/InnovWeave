@@ -133,14 +133,16 @@ export function NewChat() {
       </div>
       <div className={styles["mask-cards"]}>
         {weMasks.map((mask, i) => (
-          <div key={i} className={styles["mask-card"]}>
-            <Image
-              src={mask.pic!}
-              width={120}
-              alt="Picture of the author"
-              onClick={() => startChat(mask)}
-            />
-            <p>{mask.name}</p>
+          <div
+            key={i}
+            className={styles["mask-card"]}
+            onClick={() => startChat(mask)}
+          >
+            <Image src={mask.pic!} width={120} alt="Picture of the author" />
+            <div className={styles["mask-card-desc"]}>
+              <MaskAvatar mask={mask} />
+              <div>{mask.name}</div>
+            </div>
           </div>
         ))}
         {/* <div className={styles["mask-card"]}>
