@@ -20,6 +20,7 @@ export type Mask = {
   lang: Lang;
   builtin: boolean;
   pic?: StaticImageData;
+  weidea?: boolean;
 };
 
 export const DEFAULT_MASK_STATE = {
@@ -108,7 +109,7 @@ export const useMaskStore = create<MaskStore>()(
       },
       getWeIdea() {
         const config = useAppConfig.getState();
-        const weMasks = BUILTIN_MASKS.filter((m) => !m.builtin).map(
+        const weMasks = BUILTIN_MASKS.filter((m) => m.weidea).map(
           (m) =>
             ({
               ...m,

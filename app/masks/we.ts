@@ -29,7 +29,8 @@ export const WE_MASKS: BuiltinMask[] = [
       compressMessageLengthThreshold: 1000,
     },
     lang: "cn",
-    builtin: false,
+    builtin: true,
+    weidea: true,
     createdAt: 1688899480511,
   },
   {
@@ -56,7 +57,8 @@ export const WE_MASKS: BuiltinMask[] = [
       compressMessageLengthThreshold: 1000,
     },
     lang: "cn",
-    builtin: false,
+    builtin: true,
+    weidea: true,
     createdAt: 1688899480511,
   },
   {
@@ -83,7 +85,8 @@ export const WE_MASKS: BuiltinMask[] = [
       compressMessageLengthThreshold: 1000,
     },
     lang: "cn",
-    builtin: false,
+    builtin: true,
+    weidea: true,
     createdAt: 1688899480511,
   },
   {
@@ -110,7 +113,8 @@ export const WE_MASKS: BuiltinMask[] = [
       compressMessageLengthThreshold: 1000,
     },
     lang: "cn",
-    builtin: false,
+    builtin: true,
+    weidea: true,
     createdAt: 1688899480511,
   },
 ];
