@@ -147,7 +147,7 @@ export function MessageExporter() {
   const selectedMessages = useMemo(() => {
     const ret: ChatMessage[] = [];
     if (exportConfig.includeContext) {
-      ret.push(...session.mask.context);
+      ret.push(session.mask.context[session.mask.context.length - 1]);
     }
     ret.push(...session.messages.filter((m, i) => selection.has(m.id)));
     return ret;
@@ -461,13 +461,7 @@ export function ImagePreviewer(props: {
       >
         <div className={styles["chat-info"]}>
           <div className={styles["logo"] + " no-dark"}>
-            {/* <NextImage
-              src={LogoIcon}
-              alt="logo"
-              width={50}
-              height={50}
-            /> */}
-            <LogoIcon width={50} height={50} />
+            <LogoIcon width={36} height={36} />
           </div>
 
           <div>
