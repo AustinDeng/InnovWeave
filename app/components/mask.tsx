@@ -10,6 +10,7 @@ import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import DeleteIcon from "../icons/delete.svg";
 import EyeIcon from "../icons/eye.svg";
+import SaveIcon from "../icons/保存.svg";
 import CopyIcon from "../icons/copy.svg";
 import DragIcon from "../icons/drag.svg";
 
@@ -577,6 +578,13 @@ export function MaskPage() {
                   maskStore.create(editingMask);
                   setEditingMaskId(undefined);
                 }}
+              />,
+              <IconButton
+                key="confirm"
+                icon={<SaveIcon />}
+                bordered
+                text="保存"
+                onClick={closeMaskModal}
               />,
             ]}
           >
