@@ -147,7 +147,7 @@ export function MessageExporter() {
   const selectedMessages = useMemo(() => {
     const ret: ChatMessage[] = [];
     if (exportConfig.includeContext) {
-      ret.push(...session.mask.context);
+      ret.push(session.mask.context[session.mask.context.length - 1]);
     }
     ret.push(...session.messages.filter((m, i) => selection.has(m.id)));
     return ret;
@@ -349,13 +349,13 @@ export function PreviewActions(props: {
           icon={<DownloadIcon />}
           onClick={props.download}
         ></IconButton>
-        <IconButton
+        {/* <IconButton
           text={Locale.Export.Share}
           bordered
           shadow
           icon={loading ? <LoadingIcon /> : <ShareIcon />}
           onClick={share}
-        ></IconButton>
+        ></IconButton> */}
       </div>
       <div
         style={{
@@ -377,15 +377,7 @@ export function PreviewActions(props: {
 
 function ExportAvatar(props: { avatar: string }) {
   if (props.avatar === DEFAULT_MASK_AVATAR) {
-    return (
-      <NextImage
-        src={BotIcon.src}
-        width={30}
-        height={30}
-        alt="bot"
-        className="user-avatar"
-      />
-    );
+    return <LogoIcon className="user-avatar" />;
   }
 
   return <Avatar avatar={props.avatar}></Avatar>;
@@ -460,21 +452,19 @@ export function ImagePreviewer(props: {
         ref={previewRef}
       >
         <div className={styles["chat-info"]}>
-          <div className={styles["logo"] + " no-dark"}>
-            {/* <NextImage
-              src={LogoIcon}
-              alt="logo"
-              width={50}
-              height={50}
-            /> */}
-            <LogoIcon width={50} height={50} />
-          </div>
+          {/* <div className={styles["logo"] + " no-dark"}>
+            <LogoIcon width={36} height={36} />
+          </div> */}
 
           <div>
-            <div className={styles["main-title"]}>InnoWeave</div>
-            <div className={styles["sub-title"]}>
-              github.com/AustinDeng/ChatGPT-Next-Web
+            <div className={styles["chat-title"]}>
+              <LogoIcon width={36} height={36} />
+              <div className={styles["main-title"]}>InnovWeave</div>
             </div>
+
+            {/* <div className={styles["sub-title"]}>
+              github.com/AustinDeng/ChatGPT-Next-Web
+            </div> */}
             <div className={styles["icons"]}>
               <ExportAvatar avatar={config.avatar} />
               <span className={styles["icon-space"]}>&</span>
@@ -482,9 +472,9 @@ export function ImagePreviewer(props: {
             </div>
           </div>
           <div>
-            <div className={styles["chat-info-item"]}>
+            {/* <div className={styles["chat-info-item"]}>
               {Locale.Exporter.Model}: {mask.modelConfig.model}
-            </div>
+            </div> */}
             <div className={styles["chat-info-item"]}>
               {Locale.Exporter.Messages}: {props.messages.length}
             </div>
@@ -494,7 +484,7 @@ export function ImagePreviewer(props: {
             <div className={styles["chat-info-item"]}>
               {Locale.Exporter.Time}:{" "}
               {new Date(
-                props.messages.at(-1)?.date ?? Date.now(),
+                props.messages.at(-1)?.date || Date.now(),
               ).toLocaleString()}
             </div>
           </div>

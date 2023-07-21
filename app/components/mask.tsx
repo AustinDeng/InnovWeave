@@ -10,6 +10,7 @@ import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import DeleteIcon from "../icons/delete.svg";
 import EyeIcon from "../icons/eye.svg";
+import SaveIcon from "../icons/保存.svg";
 import CopyIcon from "../icons/copy.svg";
 import DragIcon from "../icons/drag.svg";
 
@@ -461,7 +462,7 @@ export function MaskPage() {
               autoFocus
               onInput={(e) => onSearch(e.currentTarget.value)}
             />
-            <Select
+            {/* <Select
               className={styles["mask-filter-lang"]}
               value={filterLang ?? Locale.Settings.Lang.All}
               onChange={(e) => {
@@ -481,7 +482,7 @@ export function MaskPage() {
                   {ALL_LANG_OPTIONS[lang]}
                 </option>
               ))}
-            </Select>
+            </Select> */}
 
             <IconButton
               className={styles["mask-create"]}
@@ -505,9 +506,7 @@ export function MaskPage() {
                   <div className={styles["mask-title"]}>
                     <div className={styles["mask-name"]}>{m.name}</div>
                     <div className={styles["mask-info"] + " one-line"}>
-                      {`${Locale.Mask.Item.Info(m.context.length)} / ${
-                        ALL_LANG_OPTIONS[m.lang]
-                      } / ${m.modelConfig.model}`}
+                      {`${Locale.Mask.Item.Info(m.context.length)}`}
                     </div>
                   </div>
                 </div>
@@ -579,6 +578,13 @@ export function MaskPage() {
                   maskStore.create(editingMask);
                   setEditingMaskId(undefined);
                 }}
+              />,
+              <IconButton
+                key="confirm"
+                icon={<SaveIcon />}
+                bordered
+                text="保存"
+                onClick={closeMaskModal}
               />,
             ]}
           >

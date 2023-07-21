@@ -94,6 +94,7 @@
 
   button {
     flex-grow: 1;
+
     &:not(:last-child) {
       margin-right: 10px;
     }
@@ -133,6 +134,13 @@
         left: 0px;
         height: 50%;
         transform: scale(1.5);
+      }
+
+      .chat-title {
+        display: flex;
+        width: 160px;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .main-title {
@@ -212,6 +220,5 @@
     }
   }
 
-  .default-theme {
-  }
+  .default-theme {}
 }
