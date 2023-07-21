@@ -17,7 +17,7 @@ export function AuthPage() {
   return (
     <div className={styles["auth-page"]}>
       <div className={`no-dark ${styles["auth-logo"]}`}>
-        <BotIcon />
+        <BotIcon width={48} height={48} />
       </div>
 
       <div className={styles["auth-title"]}>{Locale.Auth.Title}</div>
