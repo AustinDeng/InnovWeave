@@ -14,6 +14,7 @@ import RenameIcon from "../icons/rename.svg";
 import ExportIcon from "../icons/share.svg";
 import ReturnIcon from "../icons/return.svg";
 import CopyIcon from "../icons/copy.svg";
+import SaveIcon from "../icons/保存.svg";
 import LoadingIcon from "../icons/three-dots.svg";
 import PromptIcon from "../icons/prompt.svg";
 import MaskIcon from "../icons/mask.svg";
@@ -120,6 +121,13 @@ export function SessionConfigModel(props: { onClose: () => void }) {
                 maskStore.create(session.mask);
               }, 500);
             }}
+          />,
+          <IconButton
+            key="confirm"
+            icon={<SaveIcon />}
+            bordered
+            text="保存"
+            onClick={() => props.onClose()}
           />,
         ]}
       >
@@ -464,11 +472,11 @@ export function ChatActions(props: {
         }
       />
 
-      <ChatAction
+      {/* <ChatAction
         onClick={props.showPromptHints}
         text={Locale.Chat.InputActions.Prompt}
         icon={<PromptIcon />}
-      />
+      /> */}
 
       <ChatAction
         onClick={() => {
@@ -493,11 +501,11 @@ export function ChatActions(props: {
         }}
       />
 
-      <ChatAction
+      {/* <ChatAction
         onClick={() => setShowModelSelector(true)}
         text={currentModel}
         icon={<RobotIcon />}
-      />
+      /> */}
 
       {showModelSelector && (
         <Selector
