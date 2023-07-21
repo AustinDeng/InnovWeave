@@ -349,13 +349,13 @@ export function PreviewActions(props: {
           icon={<DownloadIcon />}
           onClick={props.download}
         ></IconButton>
-        <IconButton
+        {/* <IconButton
           text={Locale.Export.Share}
           bordered
           shadow
           icon={loading ? <LoadingIcon /> : <ShareIcon />}
           onClick={share}
-        ></IconButton>
+        ></IconButton> */}
       </div>
       <div
         style={{
@@ -452,15 +452,19 @@ export function ImagePreviewer(props: {
         ref={previewRef}
       >
         <div className={styles["chat-info"]}>
-          <div className={styles["logo"] + " no-dark"}>
+          {/* <div className={styles["logo"] + " no-dark"}>
             <LogoIcon width={36} height={36} />
-          </div>
+          </div> */}
 
           <div>
-            <div className={styles["main-title"]}>InnoWeave</div>
-            <div className={styles["sub-title"]}>
-              github.com/AustinDeng/ChatGPT-Next-Web
+            <div className={styles["chat-title"]}>
+              <LogoIcon width={36} height={36} />
+              <div className={styles["main-title"]}>InnovWeave</div>
             </div>
+
+            {/* <div className={styles["sub-title"]}>
+              github.com/AustinDeng/ChatGPT-Next-Web
+            </div> */}
             <div className={styles["icons"]}>
               <ExportAvatar avatar={config.avatar} />
               <span className={styles["icon-space"]}>&</span>
@@ -468,9 +472,9 @@ export function ImagePreviewer(props: {
             </div>
           </div>
           <div>
-            <div className={styles["chat-info-item"]}>
+            {/* <div className={styles["chat-info-item"]}>
               {Locale.Exporter.Model}: {mask.modelConfig.model}
-            </div>
+            </div> */}
             <div className={styles["chat-info-item"]}>
               {Locale.Exporter.Messages}: {props.messages.length}
             </div>
