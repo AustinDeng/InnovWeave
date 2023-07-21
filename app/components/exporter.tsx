@@ -377,15 +377,7 @@ export function PreviewActions(props: {
 
 function ExportAvatar(props: { avatar: string }) {
   if (props.avatar === DEFAULT_MASK_AVATAR) {
-    return (
-      <NextImage
-        src={BotIcon.src}
-        width={30}
-        height={30}
-        alt="bot"
-        className="user-avatar"
-      />
-    );
+    return <LogoIcon className="user-avatar" />;
   }
 
   return <Avatar avatar={props.avatar}></Avatar>;
@@ -488,7 +480,7 @@ export function ImagePreviewer(props: {
             <div className={styles["chat-info-item"]}>
               {Locale.Exporter.Time}:{" "}
               {new Date(
-                props.messages.at(-1)?.date ?? Date.now(),
+                props.messages.at(-1)?.date || Date.now(),
               ).toLocaleString()}
             </div>
           </div>
