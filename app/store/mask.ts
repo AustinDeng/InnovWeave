@@ -6,6 +6,7 @@ import { DEFAULT_TOPIC, ChatMessage } from "./chat";
 import { ModelConfig, useAppConfig } from "./config";
 import { StoreKey } from "../constant";
 import { nanoid } from "nanoid";
+import { StaticImageData } from "next/image";
 
 export type Mask = {
   id: string;
@@ -18,7 +19,7 @@ export type Mask = {
   modelConfig: ModelConfig;
   lang: Lang;
   builtin: boolean;
-  pic?: string;
+  pic?: StaticImageData;
 };
 
 export const DEFAULT_MASK_STATE = {
