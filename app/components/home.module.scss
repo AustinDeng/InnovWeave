@@ -157,7 +157,7 @@
   font-size: 12px;
   font-weight: 400;
   animation: slide-in ease 0.3s;
-  color: rgb(159, 78, 67);
+  color: rgb(212, 136, 126);
   opacity: 0.5;
 }
 
@@ -208,12 +208,12 @@
   cursor: pointer;
 }
 
-.chat-item:hover > .chat-item-delete {
+.chat-item:hover>.chat-item-delete {
   opacity: 0.5;
   transform: translateX(-4px);
 }
 
-.chat-item:hover > .chat-item-delete:hover {
+.chat-item:hover>.chat-item-delete:hover {
   opacity: 1;
 }
 
@@ -234,10 +234,12 @@
 }
 
 .narrow-sidebar {
+
   .sidebar-title,
   .sidebar-sub-title {
     display: none;
   }
+
   .sidebar-logo {
     position: relative;
     display: flex;
