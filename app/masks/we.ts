@@ -103,7 +103,7 @@ export const WE_MASKS: BuiltinMask[] = [
       {
         id: "TnzfLuCqug7i1HWzm3Mrs",
         date: "",
-        role: "assistant",
+        role: "system",
         content: "请给出需求文档信息。",
       },
     ],
